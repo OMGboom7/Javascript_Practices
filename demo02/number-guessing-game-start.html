@@ -71,7 +71,7 @@
             guesses.textContent = 'Previous guesses: ';
         }
         // 将userGuess拼接到原来的guesses
-        guesses.textContent += `${userGuess}`;
+        guesses.textContent += userGuess + ' ';
 
         if (userGuess === randomNumber) {   //正确，文字提示，更改背景颜色，清空字段，gameover方法
             lastResult.textContent = 'Congratulations! You got it right!';
@@ -102,8 +102,9 @@
          发生时要执行的代码为checkGuess（），
          作为参数的函数名不加（）
          */
-        guessSubmit.addEventListener('click', checkGuess);
     }
+
+    guessSubmit.addEventListener('click', checkGuess);
 
     function setGameOver() {
         // 结束后，禁用按钮和文本
