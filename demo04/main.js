@@ -14,18 +14,27 @@ function randomValueFromArray(array) {
 randomize.addEventListener('click', result);
 
 function result() {
+    let newStory = storyText;
+    let xItem = randomValueFromArray(insertX);
+    let yItem = randomValueFromArray(insertY);
+    let zItem = randomValueFromArray(insertZ);
+
+    newStory = ((newStory.replace(':inserta:', xItem)).replace(':insertb:', yItem)).replace(':insertc:', zItem)
+    newStory = newStory.replace(':inserta:', xItem)
+    console.log(newStory)
 
     if (customName.value !== '') {
         let name = customName.value;
-
+        newStory = newStory.replace('李雷', name)
     }
 
     if (document.getElementById("american").checked) {
-        let weight = Math.round(300);
-        let temperature = Math.round(94);
+        let weight = Math.round(130 / 0.45359237) + '磅'
+        let temperature = Math.round(34 * 9 / 5 + 32) + '华氏度';
 
+        newStory = (newStory.replace('34 摄氏度', temperature)).replace('130 公斤', weight)
     }
 
-    story.textContent = 'f';
+    story.textContent = newStory;
     story.style.visibility = 'visible';
 }
